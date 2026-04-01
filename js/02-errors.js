@@ -7,8 +7,21 @@
  *
  */
 
-const username = "Mango";
+//!=========================================
 
-let age = 20;
+// const username = 'Mango';
+// console.log(username);
+// username = 'Vasya';
 
-const price = 200;
+// let age = 20;
+// const price = 200;
+
+// const userName = 'Vasya';
+// console.log(age);
+
+//!=========================================
+
+// const x = 20;
+// console.log(x);
+
+//!=========================================

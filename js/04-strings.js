@@ -8,23 +8,40 @@
  * - Незмінність рядків
  */
 
-const firstName = "Chelsy";
-const lastName = "Emerald";
+// const firstName = 'Chelsy';
+// const lastName = 'Emerald';
+
+// const fullName = `${firstName} ${lastName}`;
 // console.log(fullName);
 
-const quantity = 15;
-const orderMsg = "You ordered ??? bots";
+// const fullName = firstName + ' ' + lastName; // 'Chelsy' + 'Emerald' = 'ChelsyEmerald'
+// console.log(fullName);
+
+//!=========================================
+// const quantity = 15;
+// const orderMsg = `You ordered ${quantity} bots`;
 // console.log(orderMsg);
 
-const message = "This string is 28 chars long";
-// console.log(message);
+// const message = 'This string is 28 chars lo';
+// console.log(message.length);
 
 /**
  * Склади фразу за допомогою шаблонних рядків
  * A has B bots in stock, де A, B - змінні вставлені в рядок.
  */
-const companyName = "Cyberdyne Systems";
-const repairBots = 150;
-const defenceBots = 50;
-// const msg = ;
+// const companyName = 'Cyberdyne Systems';
+// const repairBots = 150;
+// const defenceBots = 50;
+// const msg = `${companyName} has ${repairBots + defenceBots} bots in stock`;
 // console.log(msg); // "Cyberdyne Systems has 200 bots in stock"
+
+//!=========================================
+
+// const firstname = 'Volodymyr';
+// const firstLetter = firstname[0];
+
+// console.log(firstLetter);
+
+// const str = 'Volodymyr';
+// const lastLetter = str[str.length - 1];
+// console.log(lastLetter);
