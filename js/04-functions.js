@@ -5,19 +5,77 @@
  * - Параметри та аргументи
  * - Повернення значення
  */
+//!=========================================
 
-// console.log("Before fnA execution");
-// fnA();
-// console.log("After fnA execution");
+// function showRecipe() {
+//   console.log('1) Кинь варитись мясо');
+//   console.log('2) Почисти картоплю і кинь варитись до мяся');
+//   console.log('3) Приготуй борщову заправку');
+//   console.log('4) Вкинь заправку');
+//   console.log('5) Вкинь капусту');
+//   console.log('6) Чекай поки приготується');
+// }
 
-// console.log("Before fnB execution");
-// fnB();
-// console.log("After fnB execution");
+// showRecipe();
 
-// console.log("Before fnC execution");
-// fnC();
-// console.log("After fnC execution");
+// showRecipe();
 
+// showRecipe();
+
+//!=========================================
+// function salat1() {
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+//   console.log('Приготування першого салату');
+// }
+// function salat2() {
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+//   console.log('Приготування другого салату');
+// }
+// function salat3() {
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+//   console.log('Приготування третього салату');
+// }
+
+// function foo() {
+//   console.log('Початок приготування');
+//   salat1();
+//   salat2();
+//   salat3();
+//   console.log('Кінець приготування');
+// }
+
+// foo();
+
+//!=========================================
+
+//!=========================================
 /**
  * Напиши функцію calcBMI(weight, height) яка розраховує та повертає індекс
  * маси тіла людини. Для цього необхідно розділити вагу на
@@ -32,3 +90,83 @@
 
 // const bmi = calcBMI("88,3", "1.75");
 // console.log(bmi); // 28.8
+
+//!=========================================
+
+function myDay(currentDay) {
+  console.log('Прокинутись');
+  console.log('Почистити зуби');
+  console.log(`Зібрати рюкзак на ${currentDay}`);
+  console.log('Піти до школи');
+  console.log('Повернутись зі школи');
+  console.log('Вільний час');
+}
+
+// myDay('Понеділок');
+// myDay('Вівторок');
+//!=========================================
+
+// myDay('Понеділок');
+
+//!=========================================
+
+// myDay('Вівторок');
+
+//!=========================================
+
+// function foo(x, q, y) {
+//   console.log(`Будую будинок за планом ${x}, з матеріалів ${q} за ціною ${y}`);
+// }
+
+// foo('Від друзів', 'дешевих', 10000);
+// foo('Від друзів', 'дешевих', 10000, 'awdawd');
+// foo('Від друзів', 'дешевих');
+
+//!=========================================
+// function sayHello(firstname, city, lastname) {
+//   console.log(`Вітаю ${firstname} ${lastname} з міста ${city}`);
+// }
+
+// sayHello('Vasya', 'Dnipro', 'Romanenko');
+
+// sayHello('Петро', 'Lviv');
+
+// sayHello('Руслан', 'Kyiv', 'Vasylenko');
+
+//!=========================================
+
+// function sum(x, y) {
+//   console.log('1)');
+//   console.log('1)');
+//   console.log('1)');
+//   console.log('1)');
+//   console.log('1)');
+//   const result = x + y;
+//   console.log(result);
+// }
+
+// function sum2(x, y) {
+//   const result = x + y;
+//   return result;
+// }
+
+// const res = sum(2, 10);
+
+//!=========================================
+
+// function getArea(radius) {
+//   const res = Math.PI * radius ** 2;
+//   return res;
+// }
+
+// function getTotalPrice(price, amount, discount) {
+//   const totalPrice = price * amount;
+//   const totalPriceWithDiscount = totalPrice - discount;
+//   return totalPriceWithDiscount;
+// }
+
+// const x = Number('25');
+
+// const res = getTotalPrice(10, 5, 2) > getTotalPrice(30, 2, 40);
+
+// console.log(res);
