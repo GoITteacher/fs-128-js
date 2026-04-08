@@ -5,10 +5,18 @@
  */
 
 const hours = 14;
-const minutes = 26;
+const minutes = 0;
 let timestring;
 
-console.log(timestring);
+// if (minutes === 0) {
+//   timestring = `${hours} г.`;
+// } else {
+//   timestring = `${hours} г. ${minutes} хв.`;
+// }
+
+// timestring = minutes === 0 ? `${hours} г.` : `${hours} г. ${minutes} хв.`;
+
+// console.log(timestring);
 
 /**
  * Напиши скрипт для відображення часу дедлайну здачі проекту. Використовуй if...else.
@@ -19,4 +27,13 @@ console.log(timestring);
  * Якщо до дедлайну 3+ днів - виведи рядок "Date in the future"
  */
 
-const daysUntilDeadline = 5;
+// const daysUntilDeadline = 0;
+// if (daysUntilDeadline === 0) {
+//   console.log('Today');
+// } else if (daysUntilDeadline === 1) {
+//   console.log('Tomorrow');
+// } else if (daysUntilDeadline === 2) {
+//   console.log('Overmorrow');
+// } else {
+//   console.log('Date in the future');
+// }
