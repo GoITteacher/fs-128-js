@@ -3,26 +3,38 @@
  * - Порядок виконання
  */
 
-function fnA() {
-  console.log("fnA execution");
-}
+// function foo1() {
+//   console.log('START-1');
+//   foo2();
+//   console.log('END-1');
+// }
 
-function fnB() {
-  console.log("fnB execution");
-}
+// function foo2() {
+//   console.log('START-2');
+//   foo3();
+//   console.log('END-2');
+// }
 
-function fnC() {
-  console.log("fnC execution");
-}
+// function foo3() {
+//   console.log('START-3');
+//   foo4();
+//   console.log('END-3');
+// }
 
-console.log("Before fnA execution");
-fnA();
-console.log("After fnA execution");
+// function foo4() {
+//   console.log('START-4');
+//   console.log(hello);
+//   console.log('END-4');
+// }
 
-console.log("Before fnB execution");
-fnB();
-console.log("After fnB execution");
+// foo1();
 
-console.log("Before fnC execution");
-fnC();
-console.log("After fnC execution");
+//!=========================================
+
+// function foo(i) {
+//   console.log(i);
+//   foo(i + 1);
+// }
+// foo(1);
+
+//!=========================================
