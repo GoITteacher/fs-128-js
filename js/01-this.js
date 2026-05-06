@@ -9,78 +9,79 @@
 /**
  * Глобальний контекст
  */
-function foo() {
-  console.log("foo -> this", this);
-}
 
-foo();
+// function foo() {
+//   console.log(this); // undefined
+// }
+
+// foo();
+
+//!=========================================
 
 /**
  * Контекст методу об'єкта
  */
 
-const user = {
-  tag: "Mango",
-  showTag() {
-    console.log("showTag -> this", this);
-  },
-};
+// const user = {
+//   tag: 'Mango',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-user.showTag();
+// user.showTag();
 
+//!=========================================
 /**
  * Контекст методу об'єкта, но объявлена как внешняя функция.
  */
 
-function showTag() {
-  console.log("showTag -> this", this);
-  console.log("showTag -> this.tag", this.tag);
-}
+// function showTag() {
+//   console.log(this);
+// }
 
-showTag();
+// const mango = {
+//   tag: 'Mango',
+//   showTag: showTag,
+// };
 
-const mango = {
-  tag: "Mango",
-};
+// showTag();
 
-mango.showUserTag = showTag;
-console.log("mango", mango);
+// mango.showTag();
 
-mango.showUserTag();
-
+//!=========================================
 /**
  * Вызов без контекста, но объявлена как метод объекта.
  */
 
-const poly = {
-  tag: "Poly",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
+// const poly = {
+//   tag: 'Poly',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-poly.showTag();
+// poly.showTag();
 
-const outerShowTag = poly.showTag;
+// const myCopyFn = poly.showTag;
 
-outerShowTag();
+// myCopyFn();
+
+//!=========================================
 
 /**
  * Контекст в callback-функциях
  */
 
-const jacob = {
-  tag: "Jacob",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
+// const jacob = {
+//   tag: 'Jacob',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-function invokeAction(action) {
-  console.log(action);
-  action();
-}
+// function invokeAction(callback) {
+//   callback();
+// }
 
-invokeAction(jacob.showTag);
+// invokeAction(jacob.showTag);
