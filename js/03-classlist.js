@@ -7,8 +7,28 @@
  * - contains
  */
 
-const currentPageUrl = '/contact';
+// const liElems = document.querySelectorAll('li');
 
-const linkEl = document.querySelector(
-  `.site-nav__link[href="${currentPageUrl}"]`,
-);
+// for (const liElem of liElems) {
+//   liElem.classList.add('li-elem');
+//   if (liElem.textContent.trim().length < 8) {
+//     liElem.classList.add('invalid');
+//   }
+// }
+
+//!=========================================
+
+// const liElem = document.querySelector('li');
+
+// setInterval(() => {
+//   liElem.classList.toggle('li-elem');
+// }, 3000);
+
+//!=========================================
+
+// const liElem = document.querySelector('li');
+
+// liElem.style.fontSize = '14px';
+// liElem.style.color = 'red';
+
+// console.dir(liElem);
