@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,7 +13,7 @@
     <form class="js-form feedback-form">
       <input
         type="text"
-        name="email"
+        name="user-email"
         class="form-input"
         placeholder="Email"
         required
@@ -34,6 +34,57 @@
       ></textarea>
       <button class="form-button">Submit</button>
     </form>
+
+    <form action="submit" class="js-car-form car-search">
+      <div class="car-group">
+        <input type="text" name="title" class="car-input" placeholder="Title" />
+      </div>
+      <div class="car-group">
+        <input type="text" name="price" class="car-input" placeholder="price" />
+      </div>
+      <div class="car-group">
+        <input type="text" name="img" class="car-input" placeholder="img" />
+      </div>
+      <div class="car-group">
+        <input
+          type="text"
+          name="onSale"
+          class="car-input"
+          placeholder="onSale"
+        />
+      </div>
+      <div class="car-group">
+        <input type="text" name="type" class="car-input" placeholder="type" />
+      </div>
+      <button class="car-button">Додати</button>
+    </form>
+
+    <ul class="js-list car-list">
+      <li class="car-item on-sale">
+        <img src="https://picsum.photos/720?random=1" alt="" />
+        <div class="car-info">
+          <h3>Test Title</h3>
+          <p>Type: sport</p>
+          <p>Price: 1000$</p>
+        </div>
+      </li>
+      <li class="car-item">
+        <img src="https://picsum.photos/720?random=1" alt="" />
+        <div class="car-info">
+          <h3>Test Title</h3>
+          <p>Type: sport</p>
+          <p>Price: 1000$</p>
+        </div>
+      </li>
+      <li class="car-item on-sale">
+        <img src="https://picsum.photos/720?random=1" alt="" />
+        <div class="car-info">
+          <h3>Test Title</h3>
+          <p>Type: sport</p>
+          <p>Price: 1000$</p>
+        </div>
+      </li>
+    </ul>
 
     <script src="./js/03-forms.js"></script>
   </body>
