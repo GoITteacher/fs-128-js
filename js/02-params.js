@@ -3,7 +3,7 @@
  */
 
 const user = {
-  username: "Jacob name",
+  username: 'Jacob name',
   skills: {
     html: true,
     css: false,
@@ -12,12 +12,29 @@ const user = {
 };
 
 // Без деструктуризації
-function getUserName(obj) {
+// function getUserName(obj) {
+//   console.log(
+//     `Hello my name is ${obj.name}, I know html - ${obj.skills.html}, css - ${obj.skills.css} and js -${obj.skills.js}`,
+//   );
+// }
+
+// З деструктуризацією
+function getUserName({ username: name, skills: { html, css, js } }) {
   console.log(
-    `Hello my name is ${obj.name}, I know html - ${obj.skills.html}, css - ${obj.skills.css} and js -${obj.skills.js}`
+    `Hello my name is ${name},
+    I know html - ${html},
+    css - ${css}
+    and js -${js}`,
   );
 }
 
-// З деструктуризацією
+// getUserName(user);
 
-getUserName(user);
+//!=========================================
+
+// function showName({ title, price }) {
+//   console.log(`Book Title: ${title}, price: ${price}`);
+// }
+
+// showName({ id: 25, title: 'Harry Potter', price: 800 });
+// showName();
