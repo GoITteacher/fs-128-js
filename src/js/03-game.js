@@ -23,3 +23,50 @@
 const startBtn = document.querySelector('.start-btn');
 const container = document.querySelector('.container');
 const result = document.querySelector('.result');
+
+//!=========================================
+
+function createPromise(delay) {
+  const promise = new Promise((res, rej) => {
+    setTimeout(() => {
+      if (Math.random() > 0.3) {
+        res('🤑');
+      } else {
+        rej('👿');
+      }
+    }, delay);
+  });
+  return promise;
+}
+
+startBtn.addEventListener('click', () => {
+  result.textContent = '';
+  container.children[0].textContent = '';
+  container.children[1].textContent = '';
+  container.children[2].textContent = '';
+
+  const promises = [];
+
+  for (let i = 0; i < 3; i++) {
+    const smilePromise = createPromise((i + 1) * 100); // 1 * 1000 = 1000
+
+    smilePromise
+      .then(smile => {
+        container.children[i].textContent = smile;
+      })
+      .catch(smile => {
+        container.children[i].textContent = smile;
+      });
+
+    promises.push(smilePromise);
+  }
+
+  Promise.allSettled(promises).then(res => {
+    const isWinner = res.every(el => el.status === 'fulfilled');
+    result.textContent = isWinner
+      ? 'Ви перемогли'
+      : 'Пощастить настпуним разом, спробуйте ще!';
+  });
+});
+
+//!=========================================
