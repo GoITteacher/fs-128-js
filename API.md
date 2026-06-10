@@ -10,10 +10,22 @@
 1. [Instagram User Info](https://rapidapi.com/Glavier/api/instagram191/)
 1. [User Generator](https://rapidapi.com/mrsonj/api/random-username-generate)
 1. [Youtube Video Idea](https://rapidapi.com/apis-world-apis-world-default/api/youtube-video-idea/)
-1. [IP GEO](https://rapidapi.com/xakageminato/api/ip-geolocation-ipwhois-io/)
+1. [IP GEO](https://ip-api.com/docs/api%3Ajson?utm_source=chatgpt.com)
 1. [TRANSLATE 3](https://rapidapi.com/translated/api/mymemory-translation-memory/)
 1. [WEATHER](https://rapidapi.com/weatherbit/api/weather/)
 1. [FREE NEWS](https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news/)
 1. [RICK and MORTY](https://rickandmortyapi.com/api/character/4)
 1. [QR CODE GENERATOR](https://rapidapi.com/flowcode/api/flowcode1/)
 1. [QR CODE GENERATOR 2](https://rapidapi.com/jsavajols/api/getqrcode/)
+
+---
+
+https://q10gsl5s9d.execute-api.us-east-1.amazonaws.com/docs
+
+https://books-backend.p.goit.global/api-docs/
+
+https://drinkify.b.goit.study/api-docs/
+
+https://tasty-treats-backend.p.goit.global/api-docs/
+
+https://food-boutique.b.goit.study/api-docs/

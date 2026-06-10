@@ -22,3 +22,31 @@ import './modules/user';
 
   return fetch(url, options).then(res => res.json());
 } */
+
+//!=========================================
+
+// const base_url = 'https://jsonplaceholder.typicode.com';
+// const END_POINT = '/users';
+// const url = base_url + END_POINT;
+
+// fetch(url)
+//   .then(res => {
+//     return res.json();
+//   })
+//   .then(data => {
+//     console.log(data);
+//   });
+
+//!=========================================
+
+// function fetchUsers() {
+//   const baseUrl = 'https://jsonplaceholder.typicode.com';
+//   const endPoint = '/users';
+//   const url = baseUrl + endPoint;
+
+//   const headers = {
+//     'X-RapidAPI-Host': 'binance43.p.rapidapi.com',
+//   };
+
+//   return fetch(url, {}).then(res => res.json());
+// }

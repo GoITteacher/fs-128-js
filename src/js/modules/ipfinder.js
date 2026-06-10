@@ -3,81 +3,100 @@ const refs = {
   cardInfo: document.querySelector('.js-ip-form'),
 };
 
+//!=========================================
+
 refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
+  const formData = new FormData(e.target);
+  const userIp = formData.get('userip');
 
-  const ip = e.target.elements.userip.value;
-
-  getInfoByIp(ip).then(data => {
-    renderIp(data);
+  getIpInfo(userIp).then(data => {
+    const markup = templateIp(data);
+    refs.cardInfo.innerHTML = markup;
   });
 });
 
-function getInfoByIp(ip) {
-  const BASE_URL = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com';
-  const END_POINT = '/json/';
-  const PARAMS = `?ip=${ip}`;
-  const url = BASE_URL + END_POINT + PARAMS;
+//!=========================================
 
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': 'f6fe44fec7msh9f58de139869781p15408ajsn8e7b73b5d6b1',
-      'X-RapidAPI-Host': 'ip-geolocation-ipwhois-io.p.rapidapi.com',
-    },
-  };
-
-  return fetch(url, options).then(res => res.json());
+function getIpInfo(userIp) {
+  const baseUrl = 'http://ip-api.com';
+  const endPoint = '/json';
+  const url = `${baseUrl}${endPoint}/${userIp}`;
+  return fetch(url).then(res => res.json());
 }
 
-function renderIp({
+//!=========================================
+function templateIp({
   country,
-  ip,
+  countryCode,
   city,
-  country_flag,
-  currency,
   timezone,
-  completed_requests,
-  currency_rates,
-  latitude,
-  longitude,
+  currency,
+  isp,
+  lat,
+  lon,
+  query,
+  status,
+  message,
 }) {
-  const markup = `
-    <div class="info-item">
-    <img
-      class="flag"
-      src="${country_flag}"
-      alt="Flag of ${country}"
-    />
-    <span class="info-label">Country:</span>
-    <span class="info-value">${country}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">IP Address: </span>
-    <span class="info-value">${ip}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">City: </span> <span class="info-value">${city}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Timezone: </span>
-    <span class="info-value">${timezone}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Currency:</span>
-    <span class="info-value">${currency}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Currency Rate:</span>
-    <span class="info-value">${currency_rates}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Completed Requests:</span>
-    <span class="info-value">${completed_requests}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Google Maps:</span>
-    <a href="https://www.google.com.ua/maps/@${latitude},${longitude},13.18z?entry=ttu"><span class="info-value">Тицяй</span></a>
-  </div>`;
+  if (status === 'fail') {
+    refs.cardInfo.innerHTML = `
+      <p>Помилка: ${message}</p>
+    `;
+    return;
+  }
 
-  refs.cardInfo.innerHTML = markup;
+  const flag = `https://flagsapi.com/${countryCode}/flat/64.png`;
+
+  const markup = `
+  <div class="info-item">
+      <img
+        class="flag"
+        src="${flag}"
+        alt="Flag of ${country}"
+      />
+    </div>
+    <div class="info-item">
+      
+      <span class="info-label">Country:</span>
+      <span class="info-value">${country}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">IP Address:</span>
+      <span class="info-value">${query}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">City:</span>
+      <span class="info-value">${city}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Timezone:</span>
+      <span class="info-value">${timezone}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Currency:</span>
+      <span class="info-value">${currency}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">ISP:</span>
+      <span class="info-value">${isp}</span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Google Maps:</span>
+      <a
+        href="https://www.google.com/maps/@${lat},${lon},13z"
+        target="_blank"
+      >
+        <span class="info-value">Тицяй</span>
+      </a>
+    </div>
+  `;
+
+  return markup;
 }

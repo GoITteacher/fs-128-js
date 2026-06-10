@@ -3,20 +3,30 @@ const refs = {
   listEl: document.querySelector('.js-pokemon-list'),
 };
 
-refs.formEl.addEventListener('submit', onFormElSubmit);
-function onFormElSubmit(event) {
-  event.preventDefault();
-  const value = refs.formEl.elements.query.value;
-  getPokemon(value).then(renderPokemon);
-}
+//!=========================================
 
-function getPokemon(value) {
-  const url = `https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}`;
-  return fetch(url).then(res => {
-    return res.json();
+refs.formEl.addEventListener('submit', e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const pokemonName = formData.get('query');
+
+  fetchPokemon(pokemonName).then(res => {
+    const markup = renderPokemon(res);
+    refs.listEl.insertAdjacentHTML('afterbegin', markup);
   });
-}
 
+  e.target.reset();
+});
+
+//!=========================================
+function fetchPokemon(name) {
+  const baseUrl = 'https://pokeapi.co/api/v2';
+  const endPoint = '/pokemon';
+  const url = `${baseUrl}${endPoint}/${name}`;
+
+  return fetch(url).then(res => res.json());
+}
+//!=========================================
 function renderPokemon({
   height,
   weight,
@@ -41,5 +51,6 @@ function renderPokemon({
     <li>Base Experience: ${base_experience}</li>
   </ul>
 </div>`;
-  refs.listEl.insertAdjacentHTML('beforeend', markup);
+
+  return markup;
 }
