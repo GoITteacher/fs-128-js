@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,53 +17,35 @@
   <body>
     <div class="header horizont-box">
       <form class="card form-inline search-form js-create-form">
+        <div class="form-group">Title: <input type="text" name="title" /></div>
         <div class="form-group">
-          Title: <input type="text" name="bookTitle" />
+          Author: <input type="text" name="author" />
         </div>
-        <div class="form-group">
-          Author: <input type="text" name="bookAuthor" />
-        </div>
-        <div class="form-group">
-          Desc: <input type="text" name="bookDesc" />
-        </div>
+        <div class="form-group">Desc: <textarea name="desc"></textarea></div>
 
         <button type="submit" class="btn btn-primary">Create Book</button>
       </form>
 
       <form class="card form-inline search-form js-reset-form">
         <div class="form-group">Id: <input type="text" name="bookId" /></div>
+        <div class="form-group">Title: <input type="text" name="title" /></div>
         <div class="form-group">
-          Title: <input type="text" name="bookTitle" />
+          Author: <input type="text" name="author" />
         </div>
-        <div class="form-group">
-          Author: <input type="text" name="bookAuthor" />
-        </div>
-        <div class="form-group">
-          Desc: <input type="text" name="bookDesc" />
-        </div>
+        <div class="form-group">Desc: <textarea name="desc"></textarea></div>
 
         <button type="submit" class="btn btn-primary">Reset Book</button>
       </form>
 
       <form class="card form-inline search-form js-update-form">
         <div class="form-group">Id: <input type="text" name="bookId" /></div>
+        <div class="form-group">Title: <input type="text" name="title" /></div>
         <div class="form-group">
-          Title-: <input type="text" name="bookTitle" />
+          Author: <input type="text" name="author" />
         </div>
-        <div class="form-group">
-          Author: <input type="text" name="bookAuthor" />
-        </div>
-        <div class="form-group">
-          Desc--: <input type="text" name="bookDesc" />
-        </div>
+        <div class="form-group">Desc: <textarea name="desc"></textarea></div>
 
         <button type="submit" class="btn btn-primary">Update Book</button>
-      </form>
-
-      <form class="card form-inline search-form js-delete-form">
-        <div class="form-group">Id: <input type="text" name="bookId" /></div>
-
-        <button type="submit" class="btn btn-primary">Delete Book</button>
       </form>
     </div>
 
