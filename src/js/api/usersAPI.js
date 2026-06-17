@@ -1,63 +1,16 @@
-export function getUsers() {
-  const BASE_URL = 'http://localhost:3000';
-  const END_POINT = '/users';
-  const url = `${BASE_URL}${END_POINT}`;
-  return fetch(url).then(res => res.json());
-}
+import axios from 'axios';
 
-export function createUser(user) {
-  const BASE_URL = 'http://localhost:3000';
-  const END_POINT = '/users';
-  const url = `${BASE_URL}${END_POINT}`;
+const server = axios.create({
+  baseURL: 'https://q10gsl5s9d.execute-api.us-east-1.amazonaws.com',
+});
 
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  };
+export const getStudents = async () => {
+  const res = await server.get('/public/students');
+  return res.data;
+};
 
-  return fetch(url, options).then(res => res.json());
-}
-export function updateUser({ id, ...user }) {
-  const BASE_URL = 'http://localhost:3000';
-  const END_POINT = '/users';
-  const url = `${BASE_URL}${END_POINT}/${id}`;
-
-  const options = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  };
-
-  return fetch(url, options).then(res => res.json());
-}
-export function resetUser({ id, ...user }) {
-  const BASE_URL = 'http://localhost:3000';
-  const END_POINT = '/users';
-  const url = `${BASE_URL}${END_POINT}/${id}`;
-
-  const options = {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  };
-
-  return fetch(url, options).then(res => res.json());
-}
-export function deleteUser(id) {
-  const BASE_URL = 'http://localhost:3000';
-  const END_POINT = '/users';
-  const url = `${BASE_URL}${END_POINT}/${id}`;
-
-  const options = {
-    method: 'DELETE',
-  };
-
-  return fetch(url, options).then(res => res.json());
-}
+export const getStudentById = id => {};
+export const createStudent = body => {};
+export const replaceStudent = (id, body) => {};
+export const updateStudent = (id, body) => {};
+export const deleteStudent = id => {};

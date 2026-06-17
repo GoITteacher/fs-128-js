@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 import {
   createBook,
   deleteBook,
@@ -13,15 +16,20 @@ const refs = {
   createForm: document.querySelector('.js-create-form'),
   resetForm: document.querySelector('.js-reset-form'),
   updateForm: document.querySelector('.js-update-form'),
+  loader: document.querySelector('.js-loader'),
 };
 
 //!=========================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  getBookList().then(data => {
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    showLoader();
+    const data = await getBookList();
     const markup = booksTemplate(data.items);
     refs.container.innerHTML = markup;
-  });
+  } catch {}
+
+  hideLoader();
 });
 
 //!=========================================
@@ -30,7 +38,7 @@ refs.updateForm.addEventListener('submit', handleBookUpdate);
 refs.resetForm.addEventListener('submit', handleBookReset);
 refs.container.addEventListener('click', handleBookDelete);
 
-function handleBookCreate(e) {
+async function handleBookCreate(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
 
@@ -40,15 +48,30 @@ function handleBookCreate(e) {
     desc: formData.get('desc'),
   };
 
-  createBook(newBookData).then(res => {
+  try {
+    showLoader();
+    const res = await createBook(newBookData);
     const markup = bookTemplate(res);
     refs.container.insertAdjacentHTML('afterbegin', markup);
-  });
 
+    iziToast.success({
+      title: 'Success',
+      message: 'Book was created!',
+      position: 'topRight',
+    });
+  } catch {
+    iziToast.error({
+      title: 'Error',
+      message: 'smt went wrong',
+      position: 'topRight',
+    });
+  }
+
+  hideLoader();
   e.target.reset();
 }
 
-function handleBookUpdate(e) {
+async function handleBookUpdate(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
 
@@ -60,14 +83,18 @@ function handleBookUpdate(e) {
     desc: formData.get('desc'),
   };
 
-  updateBook(id, bookData).then(newBook => {
+  try {
+    showLoader();
+    const newBook = await updateBook(id, bookData);
     const oldElem = document.querySelector(`[data-id="${id}"]`);
     const markup = bookTemplate(newBook);
     oldElem.outerHTML = markup;
-  });
+  } catch {}
+
+  hideLoader();
 }
 
-function handleBookReset(e) {
+async function handleBookReset(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
 
@@ -79,15 +106,16 @@ function handleBookReset(e) {
     desc: formData.get('desc'),
   };
 
-  resetBook(id, bookData)
-    .then(newBook => {
-      const oldElem = document.querySelector(`[data-id="${id}"]`);
-      const markup = bookTemplate(newBook);
-      oldElem.outerHTML = markup;
-    })
-    .catch(err => {
-      console.log('err', err);
-    });
+  try {
+    showLoader();
+    const newBook = await resetBook(id, bookData);
+    const oldElem = document.querySelector(`[data-id="${id}"]`);
+    const markup = bookTemplate(newBook);
+    oldElem.outerHTML = markup;
+  } catch (err) {
+    console.log('err', err);
+  }
+  hideLoader();
 }
 
 function handleBookDelete(e) {
@@ -128,3 +156,18 @@ function booksTemplate(books) {
   return books.map(bookTemplate).join('');
 }
 //!=========================================
+
+function showLoader() {
+  refs.loader.classList.remove('hidden');
+}
+
+function hideLoader() {
+  refs.loader.classList.add('hidden');
+}
+
+function showMessage() {
+  iziToast.show({
+    title: 'Hey',
+    message: 'What would you like to add?',
+  });
+}
