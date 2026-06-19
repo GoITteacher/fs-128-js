@@ -1,105 +1,86 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
-import { fetchArticles } from './modules/newsAPI.js';
-import { articlesTemplate } from './templates/render-functions.js';
+import { fetchArticles } from './modules/newsAPI';
+import { articlesTemplate } from './templates/render-function2';
 
 const refs = {
-  formElem: document.querySelector('.js-search-form'),
-  articleListElem: document.querySelector('.js-article-list'),
-  btnLoadMore: document.querySelector('.js-btn-load'),
-  loadElem: document.querySelector('.js-loader'),
+  form: document.querySelector('.js-search-form'),
+  list: document.querySelector('.js-article-list'),
+  loadMoreBtn: document.querySelector('.js-btn-load'),
+  loader: document.querySelector('.js-loader'),
 };
-
-// ======================================
+//!=========================================
+const PER_PAGE = 10;
 let query;
 let page;
-let maxPage;
+let totalPages;
 
-refs.formElem.addEventListener('submit', onFormSubmit);
-refs.btnLoadMore.addEventListener('click', onLoadMoreClick);
+//!=========================================
 
-// ======================================
-
-async function onFormSubmit(e) {
+refs.form.addEventListener('submit', async e => {
   e.preventDefault();
-  query = e.target.elements.query.value.trim();
-  page = 1;
 
-  if (!query) {
-    showError('Empty field');
-    return;
-  }
+  const borys = new FormData(e.target);
+  query = borys.get('query');
+  page = 1;
 
   showLoader();
 
   try {
-    const data = await fetchArticles(query, page);
-    if (data.totalResults === 0) {
-      showError('Sorry!');
-    }
-    maxPage = Math.ceil(data.totalResults / 15);
-    refs.articleListElem.innerHTML = '';
-    renderArticles(data.articles);
-  } catch (err) {
-    console.log(err);
-    showError(err);
+    const res = await fetchArticles(query, page);
+    totalPages = Math.ceil(res.totalResults / PER_PAGE);
+    const markup = articlesTemplate(res.articles);
+    refs.list.innerHTML = markup;
+  } catch {
+    console.log('ERROR');
+  }
+
+  checkBtnStatus();
+  hideLoader();
+  e.target.reset();
+});
+
+//!=========================================
+
+refs.loadMoreBtn.addEventListener('click', async () => {
+  page += 1;
+
+  checkBtnStatus();
+  showLoader();
+  try {
+    const res = await fetchArticles(query, page);
+    const markup = articlesTemplate(res.articles);
+    refs.list.insertAdjacentHTML('beforeend', markup);
+  } catch {
+    console.log('error');
   }
 
   hideLoader();
-  checkBtnVisibleStatus();
-  e.target.reset();
-}
+});
 
-async function onLoadMoreClick() {
-  page += 1;
-  showLoader();
-  const data = await fetchArticles(query, page);
-  renderArticles(data.articles);
-  hideLoader();
-  checkBtnVisibleStatus();
+//!=========================================
 
-  const height =
-    refs.articleListElem.firstElementChild.getBoundingClientRect().height;
-
-  scrollBy({
-    behavior: 'smooth',
-    top: 10,
-  });
-}
-
-// ======================================
-function renderArticles(articles) {
-  const markup = articlesTemplate(articles);
-  refs.articleListElem.insertAdjacentHTML('beforeend', markup);
+function checkBtnStatus() {
+  if (page < totalPages) {
+    showLoadBtn();
+  } else {
+    hideLoadBtn();
+  }
 }
 
 function showLoadBtn() {
-  refs.btnLoadMore.classList.remove('hidden');
+  refs.loadMoreBtn.disabled = false;
+  // refs.loadMoreBtn.classList.remove('hidden');
 }
+
 function hideLoadBtn() {
-  refs.btnLoadMore.classList.add('hidden');
+  refs.loadMoreBtn.disabled = true;
+  // refs.loadMoreBtn.classList.add('hidden');
 }
+
+//!=========================================
 
 function showLoader() {
-  refs.loadElem.classList.remove('hidden');
+  refs.loader.classList.remove('hidden');
 }
 function hideLoader() {
-  refs.loadElem.classList.add('hidden');
+  refs.loader.classList.add('hidden');
 }
-
-function showError(msg) {
-  iziToast.error({
-    title: 'Error',
-    message: msg,
-  });
-}
-
-function checkBtnVisibleStatus() {
-  if (page >= maxPage) {
-    hideLoadBtn();
-  } else {
-    showLoadBtn();
-  }
-}
-// ========================================
